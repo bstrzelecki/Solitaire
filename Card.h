@@ -1,14 +1,22 @@
-//
-// Created by mabat on 8/10/21.
-//
-
-#ifndef SOLITAIRE_CARD_H
-#define SOLITAIRE_CARD_H
-
+#pragma once
+#include "raylib.h"
+#include "State.h"
+#include "Point.h"
+#include "SpriteLoader.h"
+#include "CardDefinitions.h"
 
 class Card {
+public:
+    int cardId = NONE;
+    bool IsVisible();
+    void Update();
+    void Draw();
+    void Show();
+    Card(int cardId);
+    Card* nextInStack;
+    Rectangle rect;
+private:
+    bool isVisible = false;
+    Texture2D* sprite;
 
 };
-
-
-#endif //SOLITAIRE_CARD_H
