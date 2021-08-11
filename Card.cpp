@@ -1,8 +1,6 @@
 #include "Card.h"
 
 void Card::Draw() {
-
-
     DrawTexture((IsVisible()?(*sprite):*SpriteLoader::GetSprite(BACK)), rect.x, rect.y, WHITE);
 }
 

@@ -25,3 +25,6 @@
 #define BACK 0b111100
 
 #define NONE 0b111111
+
+#define RANK_MASK 0b111100
+#define COLOR_MASK 0b000011

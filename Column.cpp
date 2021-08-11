@@ -9,19 +9,19 @@ Column::Column(int x) {
 
 }
 
-bool Column::IsPlaceableColor(int cardId) {
+bool Column::IsPlaceableColor(int cardId) const{
     if(cards == nullptr) [[unlikely]] {
-        return cardId & KING;
+        return (cardId & RANK_MASK)==KING;
     }
     if(((cardId>>2)<(cards->GetCardId()>>2))){
-        return cards->GetCardId() & SPADE || cards->GetCardId() & CLUB?
-        (cardId & HEART || cardId & DIAMOND):
-        (cardId & SPADE || cardId & CLUB);
+        return ((cards->GetCardId() & COLOR_MASK)==SPADE || (cards->GetCardId() & COLOR_MASK)==CLUB)?
+        ((cardId & COLOR_MASK)==HEART || (cardId & COLOR_MASK)==DIAMOND):
+        ((cardId & COLOR_MASK)==SPADE || (cardId & COLOR_MASK)==CLUB);
     }
     return false;
 }
 
-void Column::Draw() {
+void Column::Draw() const{
     std::stack<Card*> tmp;
 
     Card* next = cards;
@@ -48,4 +48,12 @@ void Column::ShowFirstCard() {
     if(cards!= nullptr){
         cards->Show();
     }
+}
+
+Rectangle Column::GetSize() const{
+    return size;
+}
+
+void Column::Update() {
+    ShowFirstCard();
 }

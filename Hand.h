@@ -1,14 +1,19 @@
 #pragma once
-
+#include "classes.fwd"
 #include <raylib.h>
-#include "Card.h"
 
 class Hand {
 public:
+    explicit Hand(Game* game);
     void Draw();
+    void Update();
+    bool HasDropped();
     void PickCard(Card* card, Vector2 offset);
 private:
-    Vector2 dragOffset;
+    Game* game;
+    bool hasDropped = false;
+    Vector2 dragOffset {0,0};
     Card* card = nullptr;
 };
-
+#include "Card.h"
+#include "Game.h"

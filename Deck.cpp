@@ -23,7 +23,8 @@ void Deck::Update() {
     Vector2 mouse = GetMousePosition();
     if(dragged != nullptr && !IsMouseButtonDown(0)){
         hand->PickCard(nullptr, {0,0});
-        visible.push_back(dragged);
+        if(!hand->HasDropped())
+            visible.push_back(dragged);
         dragged = nullptr;
     }
     if(mouse.x > position.x && mouse.x < position.x + position.width

@@ -14,3 +14,23 @@ void Hand::PickCard(Card *card, Vector2 offset) {
     this->card = card;
     dragOffset = offset;
 }
+
+void Hand::Update() {
+    if(card == nullptr)return;
+    if(!IsMouseButtonDown(0)){
+        if(game->DropCard(card)){
+            hasDropped = true;
+            card = nullptr;
+        }
+    }
+}
+
+Hand::Hand(Game* game) {
+    this->game = game;
+}
+
+bool Hand::HasDropped() {
+    bool tmp = hasDropped;
+    hasDropped = false;
+    return tmp;
+}

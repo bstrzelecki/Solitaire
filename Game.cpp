@@ -3,7 +3,7 @@
 
 
 
-Game::Game() : deck(&hand, 0,0),columns{0,
+Game::Game() : hand(this), deck(&hand, 0,0),columns{0,
                                         (SpriteLoader::GetSprite(NONE)->width + offset),
                                         (SpriteLoader::GetSprite(NONE)->width + offset)*2,
                                         (SpriteLoader::GetSprite(NONE)->width + offset)*3,
@@ -54,9 +54,14 @@ void Game::Start() {
 
         ClearBackground(DARKGREEN);
 
+        hand.Update();
+
         for (Column col:columns) {
+            col.Update();
             col.Draw();
         }
+
+
 
         deck.Update();
         deck.Draw();
@@ -69,4 +74,16 @@ void Game::Start() {
 
 Game::~Game() {
     CloseWindow();
+}
+
+bool Game::DropCard(Card *card) {
+    Vector2 mouse = GetMousePosition();
+    for (int i = 0; i < 7; i++) {
+        if(mouse.x < columns[i].GetSize().x || mouse.x > columns[i].GetSize().x + columns[i].GetSize().width) continue;
+        if(columns[i].IsPlaceableColor(card->GetCardId())){
+            columns[i].AddCard(card);
+            return true;
+        }
+    }
+    return false;
 }

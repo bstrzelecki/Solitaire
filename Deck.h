@@ -1,12 +1,13 @@
 #pragma once
 
-
+#include "classes.fwd"
 #include <raylib.h>
 #include <stack>
 #include <queue>
 #include <list>
-#include "Card.h"
-#include "Hand.h"
+
+
+class Hand;
 
 class Deck {
 public:
@@ -23,3 +24,6 @@ private:
     std::stack<Card*> hidden;
     std::list<Card*> visible;
 };
+
+#include "Card.h"
+#include "Hand.h"
