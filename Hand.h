@@ -6,8 +6,9 @@
 class Hand {
 public:
     void Draw();
+    void PickCard(Card* card, Vector2 offset);
 private:
     Vector2 dragOffset;
-    Card* card;
+    Card* card = nullptr;
 };
 

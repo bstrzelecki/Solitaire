@@ -7,15 +7,16 @@
 
 class Card {
 public:
-    int cardId = NONE;
     bool IsVisible();
     void Update();
     void Draw();
+    int GetCardId() const;
     void Show();
     Card(int cardId);
     Card* nextInStack;
     Rectangle rect;
 private:
+    int cardId = NONE;
     bool isVisible = false;
     Texture2D* sprite;
 

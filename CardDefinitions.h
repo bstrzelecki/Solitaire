@@ -22,6 +22,6 @@
 #define QUEEN 0b101100
 #define KING 0b110000
 
-#define BACK 0b110000
+#define BACK 0b111100
 
 #define NONE 0b111111

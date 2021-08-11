@@ -2,13 +2,6 @@
 
 void Card::Draw() {
 
-    int offset = 0;
-    Card* next = nextInStack;
-
-    while(next != nullptr){
-        offset += 30;
-        next = nextInStack->nextInStack;
-    }
 
     DrawTexture((IsVisible()?(*sprite):*SpriteLoader::GetSprite(BACK)), rect.x, rect.y, WHITE);
 }
@@ -29,5 +22,13 @@ bool Card::IsVisible() {
 
 void Card::Show() {
     isVisible = true;
+}
+
+int Card::GetCardId() const {
+    if(cardId>=0&& cardId <= (KING|DIAMOND)){
+        return cardId;
+    }else{
+        return NONE;
+    }
 }
 

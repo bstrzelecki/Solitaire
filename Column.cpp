@@ -13,8 +13,8 @@ bool Column::IsPlaceableColor(int cardId) {
     if(cards == nullptr) [[unlikely]] {
         return cardId & KING;
     }
-    if(((cardId>>2)<(cards->cardId>>2))){
-        return cards->cardId & SPADE || cards->cardId & CLUB?
+    if(((cardId>>2)<(cards->GetCardId()>>2))){
+        return cards->GetCardId() & SPADE || cards->GetCardId() & CLUB?
         (cardId & HEART || cardId & DIAMOND):
         (cardId & SPADE || cardId & CLUB);
     }

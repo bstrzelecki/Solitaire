@@ -3,5 +3,5 @@ project(Solitaire)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(Solitaire main.cpp Card.cpp Card.h State.h CardDefinitions.h Point.h SpriteLoader.h Column.cpp Column.h SpriteLoader.cpp Deck.cpp Deck.h Hand.cpp Hand.h)
+add_executable(Solitaire main.cpp Card.cpp Card.h State.h CardDefinitions.h Point.h SpriteLoader.h Column.cpp Column.h SpriteLoader.cpp Deck.cpp Deck.h Hand.cpp Hand.h Game.cpp Game.h)
 target_link_libraries(Solitaire "/usr/lib/libraylib.so")
