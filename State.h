@@ -1,10 +1,10 @@
 #pragma once
 
-struct State{
-    int deltaTime = 0;
-    int flagBuffer = 0;
+#include "classes.fwd"
+#include <memory>
+#include "Game.h"
 
-    State(int deltaTime){
-        this->deltaTime = deltaTime;
-    }
-};
+namespace State{
+    std::shared_ptr<Game> GetState();
+    void InitializeState();
+}

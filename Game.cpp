@@ -56,9 +56,10 @@ void Game::Start() {
 
         hand.Update();
 
-        for (Column col:columns) {
-            col.Update();
-            col.Draw();
+
+        for(int i = 0; i<7; i++){
+            columns[i].Update();
+            columns[i].Draw();
         }
 
 
@@ -82,6 +83,36 @@ bool Game::DropCard(Card *card) {
         if(mouse.x < columns[i].GetSize().x || mouse.x > columns[i].GetSize().x + columns[i].GetSize().width) continue;
         if(columns[i].IsPlaceableColor(card->GetCardId())){
             columns[i].AddCard(card);
+            columns[i].ShowFirstCard();
+            return true;
+        }
+    }
+    return false;
+}
+
+Hand& Game::GetHand() {
+    return hand;
+}
+
+bool Game::DropRange(Card* start, Card* end) {
+    Vector2 mouse = GetMousePosition();
+    for (int i = 0; i < 7; i++) {
+        if(mouse.x < columns[i].GetSize().x || mouse.x > columns[i].GetSize().x + columns[i].GetSize().width) continue;
+        if(columns[i].IsPlaceableColor(end->GetCardId())){
+            columns[i].AddCard(end);
+
+            std::stack<Card*> tmp;
+            Card* next = start;
+            while(next != end){
+                tmp.push(next);
+                next = next->nextInStack;
+            }
+            while(!tmp.empty()){
+                columns[i].AddCard(tmp.top());
+                tmp.pop();
+            }
+
+
             return true;
         }
     }

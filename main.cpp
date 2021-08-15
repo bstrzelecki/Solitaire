@@ -1,3 +1,4 @@
+#include <memory>
 #include "SpriteLoader.h"
 #include "Game.h"
 
@@ -13,8 +14,9 @@ int main()
 
     SpriteLoader::LoadSprites();
 
-    Game game;
-    game.Start();
+    State::InitializeState();
+
+    State::GetState()->Start();
 
     return 0;
 }

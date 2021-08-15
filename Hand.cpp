@@ -16,13 +16,23 @@ void Hand::PickCard(Card *card, Vector2 offset) {
 }
 
 void Hand::Update() {
+    if(hasDropped)hasDropped = false;
     if(card == nullptr)return;
     if(!IsMouseButtonDown(0)){
-        if(game->DropCard(card)){
-            hasDropped = true;
-            card = nullptr;
+        if(first == nullptr){
+            if(game->DropCard(card)){
+                hasDropped = true;
+                card = nullptr;
+            }
+        }else{
+            if(game->DropRange(first, card)){
+                hasDropped = true;
+                card = nullptr;
+                first = nullptr;
+            }
         }
     }
+
 }
 
 Hand::Hand(Game* game) {
@@ -30,7 +40,10 @@ Hand::Hand(Game* game) {
 }
 
 bool Hand::HasDropped() {
-    bool tmp = hasDropped;
-    hasDropped = false;
-    return tmp;
+    return hasDropped;
+}
+
+void Hand::PickCard(Card* start, Card* end, Vector2 offset) {
+    first = start;
+    card = end;
 }

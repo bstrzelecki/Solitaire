@@ -2,15 +2,18 @@
 
 namespace SpriteLoader{
     Texture2D* sprites;
+    bool hasLoaded;
 }
 
 
 Texture2D* SpriteLoader::GetSprite(int cardId){
+    if(!hasLoaded)LoadSprites();
     return &sprites[cardId];
 }
 
 void SpriteLoader::LoadSprites(){
-
+    if(hasLoaded)return;
+    hasLoaded = true;
     sprites = new Texture2D[1 << 6];
 
     sprites[ACE|SPADE]   = LoadTexture("Sprites/ace_spades_white.png");
