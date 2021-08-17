@@ -14,11 +14,11 @@ public:
     void Update();
     void AddCard(Card* card);
     void ShowFirstCard();
+    static bool isDragging;
 private:
     Rectangle size;
     Card* start = nullptr;
     Card* end = nullptr;
-    static bool isDragging;
     Card* cards = nullptr;
 };
 

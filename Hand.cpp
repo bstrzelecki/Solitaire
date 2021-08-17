@@ -12,12 +12,16 @@ void Hand::Draw() {
 
 void Hand::PickCard(Card *card, Vector2 offset) {
     this->card = card;
+    Column::isDragging = true;
     dragOffset = offset;
 }
 
 void Hand::Update() {
     if(hasDropped)hasDropped = false;
-    if(card == nullptr)return;
+    if(card == nullptr) {
+        first = nullptr;
+        return;
+    }
     if(!IsMouseButtonDown(0)){
         if(first == nullptr){
             if(game->DropCard(card)){

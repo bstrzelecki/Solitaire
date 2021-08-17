@@ -6,6 +6,7 @@
 #include "Deck.h"
 #include "Column.h"
 #include "Hand.h"
+#include "Stack.h"
 
 
 class Game {
@@ -20,6 +21,7 @@ private:
     Hand hand;
     Deck deck;
     std::array<Column, 7> columns;
+    std::array<Stack, 4> stacks;
     const static int offset = 5;
 };
 

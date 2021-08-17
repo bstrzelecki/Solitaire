@@ -9,7 +9,11 @@ Game::Game() : hand(this), deck(&hand, 0,0),columns{0,
                                         (SpriteLoader::GetSprite(NONE)->width + offset)*3,
                                         (SpriteLoader::GetSprite(NONE)->width + offset)*4,
                                         (SpriteLoader::GetSprite(NONE)->width + offset)*5,
-                                        (SpriteLoader::GetSprite(NONE)->width + offset)*6} {
+                                        (SpriteLoader::GetSprite(NONE)->width + offset)*6},
+                                        stacks{(SpriteLoader::GetSprite(NONE)->width + offset)*3,
+                                               (SpriteLoader::GetSprite(NONE)->width + offset)*4,
+                                               (SpriteLoader::GetSprite(NONE)->width + offset)*5,
+                                               (SpriteLoader::GetSprite(NONE)->width + offset)*6,}{
 
 
     std::vector<int> cards(52);
@@ -62,6 +66,9 @@ void Game::Start() {
             columns[i].Draw();
         }
 
+        for(int i = 0; i < 4; i++){
+            stacks[i].Draw();
+        }
 
 
         deck.Update();
@@ -85,6 +92,11 @@ bool Game::DropCard(Card *card) {
             columns[i].AddCard(card);
             columns[i].ShowFirstCard();
             return true;
+        }
+    }
+    for(int i = 0; i < 4; i++){
+        if(CheckCollisionPointRec(mouse, stacks[i].GetSize())){
+            return stacks[i].Drop(card);
         }
     }
     return false;

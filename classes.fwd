@@ -3,3 +3,4 @@ class Game;
 class Column;
 class Deck;
 class Hand;
+class Stack;

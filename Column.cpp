@@ -60,7 +60,7 @@ Rectangle Column::GetSize() const{
 void Column::Update() {
     Vector2 mouse = GetMousePosition();
     Hand& hand = State::GetState()->GetHand();
-    if(CheckCollisionPointRec(mouse, size) && IsMouseButtonDown(0) && !isDragging){
+    if(cards!=nullptr &&CheckCollisionPointRec(mouse, size) && IsMouseButtonDown(0) && !isDragging){
         isDragging = true;
         start = cards;
         Card* next = cards;
