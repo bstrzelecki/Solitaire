@@ -32,6 +32,7 @@ void Deck::Update() {
         next();
     }
 
+    if(visible.empty())return;
     if(mouse.x > position.x + position.width + 5 && mouse.x < position.x + position.width * 2 + 5
     && mouse.y > position.y && mouse.y < position.y + position.height && IsMouseButtonPressed(0)){
         hand->PickCard(visible.back(), {mouse.x - (position.x + position.width + 5), mouse.y - position.y});

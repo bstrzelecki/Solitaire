@@ -86,17 +86,17 @@ Game::~Game() {
 
 bool Game::DropCard(Card *card) {
     Vector2 mouse = GetMousePosition();
+    for(int i = 0; i < 4; i++){
+        if(CheckCollisionPointRec(mouse, stacks[i].GetSize())){
+            return stacks[i].Drop(card);
+        }
+    }
     for (int i = 0; i < 7; i++) {
         if(mouse.x < columns[i].GetSize().x || mouse.x > columns[i].GetSize().x + columns[i].GetSize().width) continue;
         if(columns[i].IsPlaceableColor(card->GetCardId())){
             columns[i].AddCard(card);
             columns[i].ShowFirstCard();
             return true;
-        }
-    }
-    for(int i = 0; i < 4; i++){
-        if(CheckCollisionPointRec(mouse, stacks[i].GetSize())){
-            return stacks[i].Drop(card);
         }
     }
     return false;
