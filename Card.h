@@ -1,7 +1,6 @@
 #pragma once
 #include "raylib.h"
 #include "State.h"
-#include "Point.h"
 #include "SpriteLoader.h"
 #include "CardDefinitions.h"
 
