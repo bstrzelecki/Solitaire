@@ -5,3 +5,4 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_executable(Solitaire main.cpp Card.cpp Card.h State.h CardDefinitions.h SpriteLoader.h Column.cpp Column.h SpriteLoader.cpp Deck.cpp Deck.h Hand.cpp Hand.h Game.cpp Game.h classes.fwd State.cpp Stack.cpp Stack.h)
 target_link_libraries(Solitaire "/usr/lib/libraylib.so")
+file(COPY Sprites DESTINATION ${CMAKE_BINARY_DIR})
