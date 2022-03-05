@@ -7,6 +7,7 @@
 #include "Column.h"
 #include "Hand.h"
 #include "Stack.h"
+#include <algorithm>
 
 
 class Game {
