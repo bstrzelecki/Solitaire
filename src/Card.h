@@ -1,5 +1,6 @@
 #pragma once
 #include "raylib.h"
+#include "classes.fwd"
 #include "State.h"
 #include "SpriteLoader.h"
 #include "CardDefinitions.h"
@@ -7,7 +8,6 @@
 class Card {
 public:
     bool IsVisible();
-    void Update();
     void Draw();
     int GetCardId() const;
     void Show();

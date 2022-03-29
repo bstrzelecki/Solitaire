@@ -1,6 +1,6 @@
 class Card;
-class Game;
 class Column;
+class Game;
 class Deck;
 class Hand;
 class Stack;

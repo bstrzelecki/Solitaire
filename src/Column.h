@@ -1,8 +1,10 @@
 #pragma once
 
-#include "classes.fwd"
 #include <stack>
 #include "raylib.h"
+#include "SpriteLoader.h"
+#include "classes.fwd"
+
 
 class Column {
 public:
@@ -22,7 +24,5 @@ private:
     Card* cards = nullptr;
 };
 
-
-#include "SpriteLoader.h"
 #include "Card.h"
-#include "State.h"
+

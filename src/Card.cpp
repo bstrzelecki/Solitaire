@@ -10,10 +10,6 @@ Card::Card(int cardId) {
     rect = Rectangle{0,0, static_cast<float>(sprite->width), static_cast<float>(sprite->height)};
 }
 
-void Card::Update() {
-
-}
-
 bool Card::IsVisible() {
     return isVisible;
 }
