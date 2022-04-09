@@ -6,3 +6,12 @@ _deps/
 build/
 
 cmake-build-debug/
+CMakeFiles/
+
+CMakeCache.txt
+
+compile_commands.json
+
+Makefile
+
+*.cmake

@@ -7,10 +7,10 @@
 
 class Card {
 public:
-    bool IsVisible();
-    void Draw();
-    int GetCardId() const;
-    void Show();
+    virtual bool IsVisible();
+    virtual void Draw();
+    virtual int GetCardId() const;
+    virtual void Show();
     Card(int cardId);
     Card* nextInStack;
     Rectangle rect;

@@ -10,17 +10,18 @@ void Stack::Draw() {
 }
 
 bool Stack::Drop(Card *card) {
+    int cardId = card->GetCardId();
     if(last == nullptr){
-        if((card->GetCardId() & RANK_MASK) == ACE){
-            delete last;
+        if((cardId & RANK_MASK) == ACE){
             last = card;
             return true;
         }else{
             return false;
         }
     }
+    int lastId = last->GetCardId();
 
-    if(((last->GetCardId() & RANK_MASK) >> 2) - ((card->GetCardId() & RANK_MASK) >> 2) == -1 && (last->GetCardId()&COLOR_MASK) == (card->GetCardId()&COLOR_MASK)){
+    if(((lastId & RANK_MASK) >> 2) - ((cardId & RANK_MASK) >> 2) == -1 && (lastId&COLOR_MASK) == (cardId&COLOR_MASK)){
         delete last;
         last = card;
         return true;
